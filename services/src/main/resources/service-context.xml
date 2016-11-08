@@ -18,8 +18,11 @@
 
 	<context:component-scan base-package="ru.tasha2k7.mail.motordepot.daodb.impl" />
 	<context:component-scan base-package="ru.tasha2k7.mail.motordepot.services.impl" />
+<<<<<<< HEAD
 	
 	<context:component-scan base-package="ru.tasha2k7.mail.motordepot.daodb.dimapper.impl" />
+=======
+>>>>>>> 088f4c8f978dd05463ab6809e8e6228391bc6292
 
 
 	<context:property-placeholder

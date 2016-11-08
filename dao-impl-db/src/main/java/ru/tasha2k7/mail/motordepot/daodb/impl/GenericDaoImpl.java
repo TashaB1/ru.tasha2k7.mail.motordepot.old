@@ -15,7 +15,10 @@ import org.springframework.util.Assert;
 
 import ru.tasha2k7.mail.motordepot.annotation.analyzer.DBTableNameAnalyzer;
 import ru.tasha2k7.mail.motordepot.daodb.GenericDao;
+<<<<<<< HEAD
 import ru.tasha2k7.mail.motordepot.daodb.dimapper.ApplicationDiMapper;
+=======
+>>>>>>> 088f4c8f978dd05463ab6809e8e6228391bc6292
 import ru.tasha2k7.mail.motordepot.daodb.dimapper.DiMapper;
 
 @Repository
@@ -23,10 +26,20 @@ public abstract class GenericDaoImpl<T, PK extends Serializable> implements Gene
 
 	@Inject
 	private JdbcTemplate jdbcTemplate;
+<<<<<<< HEAD
 	private final String dbTableName = new DBTableNameAnalyzer().getDBTableName(this.getGenericEntityClass());
 
 	@Inject
 	private DiMapper diMapper;	
+=======
+	private final DiMapper<T> diMapper;
+	private final String dbTableName = new DBTableNameAnalyzer().getDBTableName(this.getGenericEntityClass());
+
+	public GenericDaoImpl(DiMapper<T> diMapper) {
+		Assert.notNull(diMapper);
+		this.diMapper = diMapper;
+	}
+>>>>>>> 088f4c8f978dd05463ab6809e8e6228391bc6292
 
 	@SuppressWarnings("unchecked")
 	protected Class<T> getGenericEntityClass() {

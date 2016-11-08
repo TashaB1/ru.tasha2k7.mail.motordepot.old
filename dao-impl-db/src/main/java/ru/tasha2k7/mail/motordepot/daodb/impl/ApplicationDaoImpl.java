@@ -4,20 +4,37 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+<<<<<<< HEAD
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> 088f4c8f978dd05463ab6809e8e6228391bc6292
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import ru.tasha2k7.mail.motordepot.daodb.ApplicationDao;
+<<<<<<< HEAD
 import ru.tasha2k7.mail.motordepot.daodb.dimapper.impl.ApplicationDiMapper;
+=======
+import ru.tasha2k7.mail.motordepot.daodb.dimapper.DiMapper;
+>>>>>>> 088f4c8f978dd05463ab6809e8e6228391bc6292
 import ru.tasha2k7.mail.motordepot.datamodel.Application;
 
 @Repository
 public class ApplicationDaoImpl extends GenericDaoImpl<Application, Long> implements ApplicationDao {
 
+<<<<<<< HEAD
 	@Inject
 	private ApplicationDiMapper applicationDiMapper;
 	
+=======
+	
+	public ApplicationDaoImpl(DiMapper<Application> diMapper) {
+		super(diMapper);
+	}
+	
+	@Autowired
+>>>>>>> 088f4c8f978dd05463ab6809e8e6228391bc6292
 	@Inject
 	private JdbcTemplate jdbcTemplate;
 
