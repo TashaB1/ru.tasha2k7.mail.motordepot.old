@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>ru.tasha2k7.mail.motordepot</groupId>
-  <artifactId>parent-project</artifactId>
-  <version>1.0.0</version>
- <description>Система Автобаза. Диспетчер распределяет Заявки на Рейс между Водителями, за каждым из которых закреплен свой Автомобиль. На Рейс может быть назначен Автомобиль, находящийся в исправном состоянии и характеристики которого соответствуют Заявке. Водитель делает отметку о выполнении Рейса и состоянии Автомобиля.</description>
-  <packaging>pom</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ru.tasha2k7.mail.motordepot</groupId>
+	<artifactId>parent-project</artifactId>
+	<version>1.0.0</version>
+	<description>Система Автобаза. Диспетчер распределяет Заявки на Рейс между Водителями, за каждым из которых закреплен свой Автомобиль. На Рейс может быть назначен Автомобиль, находящийся в исправном состоянии и характеристики которого соответствуют Заявке. Водитель делает отметку о выполнении Рейса и состоянии Автомобиля.</description>
+	<packaging>pom</packaging>
 
 	<properties>
-		<customVar>ru.tasha2k7.mail</customVar>
+		<customVar>ru.tasha2k7.mail.motordepot</customVar>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<common.project.version>1.0</common.project.version>
 		<spring.version>4.0.3.RELEASE</spring.version>
@@ -26,44 +27,41 @@
 		<dependencies>
 			<!-- Project modules -->
 			<dependency>
-				<groupId>ru.tasha2k7.mail</groupId>
+				<groupId>ru.tasha2k7.mail.motordepot</groupId>
 				<artifactId>datamodel</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>ru.tasha2k7.mail</groupId>
+				<groupId>ru.tasha2k7.mail.motordepot</groupId>
 				<artifactId>dao-api</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>ru.tasha2k7.mail</groupId>
+				<groupId>ru.tasha2k7.mail.motordepot</groupId>
 				<artifactId>dao-impl-db</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>ru.tasha2k7.mail</groupId>
+				<groupId>ru.tasha2k7.mail.motordepot</groupId>
 				<artifactId>dao-impl-xml</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 
 			<dependency>
-				<groupId>ru.tasha2k7.mail</groupId>
+				<groupId>ru.tasha2k7.mail.motordepot</groupId>
 				<artifactId>services</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 
 			<dependency>
-				<groupId>ru.tasha2k7.mail</groupId>
+				<groupId>ru.tasha2k7.mail.motordepot</groupId>
 				<artifactId>webapp</artifactId>
 				<version>1.0.0</version>
 			</dependency>
-
-
-
 
 
 			<!-- Other libraries -->
@@ -73,6 +71,7 @@
 				<artifactId>javax.inject</artifactId>
 				<version>1</version>
 			</dependency>
+			
 			<!-- Spring framework -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -176,7 +175,7 @@
 		</dependencies>
 	</dependencyManagement>
 
-<build>
+	<build>
 		<plugins>
 		</plugins>
 		<pluginManagement>
