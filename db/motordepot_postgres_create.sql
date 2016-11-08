@@ -1,4 +1,4 @@
-﻿set search_path to motordepot;
+﻿SET search_path TO motordepot;
 
 CREATE TABLE "dispatcher" (
 	"id" serial NOT NULL,
@@ -21,11 +21,12 @@ CREATE TABLE "application" (
 	"length_cargo_m" real NOT NULL,
 	"width_cargo_m" real NOT NULL,
 	"heigth_cargo_m" real NOT NULL,
-	"driver_id" bigint NOT NULL,
-	"status" character varying,
 	"mark_delivery_cargo" BOOLEAN NOT NULL,
 	"date_delivery_cargo" DATE NOT NULL,
 	"dispatcher_id" bigint NOT NULL,
+	"driver_id" bigint NOT NULL,
+	"note" character varying(512) NOT NULL,
+	"status" character varying(256),
 	CONSTRAINT application_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -35,9 +36,10 @@ CREATE TABLE "application" (
 
 CREATE TABLE "trip" (
 	"id" serial NOT NULL,
-	"departure_point" character varying(256),
-	"departure_date" DATE,
+	"point_departure" character varying(256),
+	"date_departure" DATE,
 	"destination" character varying(256),
+	"date_destination" DATE NOT NULL,
 	CONSTRAINT trip_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -48,10 +50,10 @@ CREATE TABLE "trip" (
 CREATE TABLE "driver" (
 	"id" serial NOT NULL,
 	"employee_id" serial NOT NULL,
-	"driver_license_number" character varying,
-	"driver_license_category" character varying,
+	"number_driver_license" character varying(128),
+	"category_driver_license" character varying(128),
 	"car_id" bigint,
-	"status" character varying,
+	"status" character varying(256),
 	CONSTRAINT driver_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -66,6 +68,7 @@ CREATE TABLE "employee" (
 	"surname" character varying(512),
 	"birthday" DATE,
 	"position" character varying(512),
+	"deleted" DATE NOT NULL,
 	CONSTRAINT employee_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -76,13 +79,14 @@ CREATE TABLE "employee" (
 CREATE TABLE "car" (
 	"id" serial NOT NULL,
 	"make_model" character varying(256),
-	"registration_number" character varying(256),
-	"carrying_capacity_kg" real,
-	"dimensions_length_m" real,
-	"dimensions_width_m" real,
-	"dimensions_heigth_m" real,
+	"number_registration" character varying(256),
+	"capacity_carrying_kg" real,
+	"length_dimensions_m" real,
+	"width_dimensions_m" real,
+	"heigth_dimensions_m" real,
 	"condition_vehical" BOOLEAN,
-	"date_inspection" DATE,
+	"inspection_date" DATE,
+	"deleted" DATE NOT NULL,
 	CONSTRAINT car_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -92,9 +96,10 @@ CREATE TABLE "car" (
 
 CREATE TABLE "client" (
 	"id" serial NOT NULL,
-	"client_name" character varying(512) NOT NULL,
+	"name_client" character varying(512) NOT NULL,
 	"address" character varying(512) NOT NULL,
 	"number_phone" character varying(256) NOT NULL,
+	"deleted" DATE NOT NULL,
 	CONSTRAINT client_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -106,8 +111,8 @@ ALTER TABLE "dispatcher" ADD CONSTRAINT "dispatcher_fk0" FOREIGN KEY ("employee_
 
 ALTER TABLE "application" ADD CONSTRAINT "application_fk0" FOREIGN KEY ("client_id") REFERENCES "client"("id");
 ALTER TABLE "application" ADD CONSTRAINT "application_fk1" FOREIGN KEY ("trip_id") REFERENCES "trip"("id");
-ALTER TABLE "application" ADD CONSTRAINT "application_fk2" FOREIGN KEY ("driver_id") REFERENCES "driver"("id");
-ALTER TABLE "application" ADD CONSTRAINT "application_fk3" FOREIGN KEY ("dispatcher_id") REFERENCES "dispatcher"("id");
+ALTER TABLE "application" ADD CONSTRAINT "application_fk2" FOREIGN KEY ("dispatcher_id") REFERENCES "dispatcher"("id");
+ALTER TABLE "application" ADD CONSTRAINT "application_fk3" FOREIGN KEY ("driver_id") REFERENCES "driver"("id");
 
 
 ALTER TABLE "driver" ADD CONSTRAINT "driver_fk0" FOREIGN KEY ("employee_id") REFERENCES "employee"("id");
